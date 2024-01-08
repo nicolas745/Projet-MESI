@@ -2,7 +2,7 @@
 
 Bienvenue sur le projet MESI, réalisé dans le cadre de nos études à l'école IPI. Notre équipe est composée de :
 
-- Bengrine Fares
+
 - Melvynn Eyele
 - Nicolas Blanc
 

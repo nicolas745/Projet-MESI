@@ -4,6 +4,7 @@
   "description": "Bienvenue sur le projet MESI, réalisé dans le cadre de nos études à l'école IPI. Notre équipe est composée de :",
   "main": "test.js",
   "scripts": {
+    "start": "nodemon server.js",  
     "test": "mocha test.js"
   },
   "author": "",

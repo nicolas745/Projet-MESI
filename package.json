@@ -5,8 +5,9 @@
   "main": "test.js",
   "scripts": {
     "start": "nodemon server.js",
-    "build": "webpack",
-    "dev": "npm run build && npm start"
+    "build": "cd mesi2024 && npm run build",
+    "dev": "npm run build && npm start",
+    "client": "cd mesi2024 && npm run start"
   },
   "author": "",
   "license": "ISC",

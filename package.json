@@ -4,6 +4,7 @@
   "description": "Bienvenue sur le projet MESI, réalisé dans le cadre de nos études à l'école IPI. Notre équipe est composée de :",
   "main": "test.js",
   "scripts": {
+    "init" : "npm install && cd mesi2024 && npm install",
     "test": "mocha test.js",
     "start": "nodemon server.js",
     "build": "cd mesi2024 && npm run build",

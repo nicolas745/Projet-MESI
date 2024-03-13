@@ -21,4 +21,6 @@ Le projet MESI est un site de streaming développé en utilisant principalement 
 3. Naviguez vers le répertoire du projet.
 4. Exécutez la commande suivante pour installer les dépendances :
    ```bash
-   npm install
+   npm run init
+   npm run dev
+   ```

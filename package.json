@@ -4,7 +4,7 @@
   "description": "Bienvenue sur le projet MESI, réalisé dans le cadre de nos études à l'école IPI. Notre équipe est composée de :",
   "main": "test.js",
   "scripts": {
-    "init" : "npm install && cd mesi2024 && npm install",
+    "init": "npm install && cd mesi2024 && npm install",
     "test": "mocha test.js",
     "start": "nodemon server.js",
     "build": "cd mesi2024 && npm run build",
@@ -34,5 +34,13 @@
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   },
-  "keywords": []
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolas745/Projet-MESI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nicolas745/Projet-MESI/issues"
+  },
+  "homepage": "https://github.com/nicolas745/Projet-MESI#readme"
 }

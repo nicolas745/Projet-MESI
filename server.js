@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port = 8080;
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
@@ -11,6 +12,6 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 });
 
-server.listen(8080, () => {
-  console.log('listening on *:80');
+server.listen(port, () => {
+  console.log("listening on *:"+port);
 });

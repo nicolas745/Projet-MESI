@@ -1,0 +1,5 @@
+<footer>
+    <script tal:condition="script | nothing" tal:attributes="src script"></script>
+    <script src="/static/js/lang.js"></script>
+    <script tal:condition="not '{{session.get('id')}}' == 'None'" src="/static/js/admin/perm.js"></script>
+</footer>

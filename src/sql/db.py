@@ -1,0 +1,28 @@
+import sqlite3
+class DB():
+    def __init__(self,sqltype="sqlite") -> None:
+        self.type = sqltype
+        self.sqlname = "base.db"
+        self.create()
+    def execute(self,query,*data):
+        if(self.type=="sqlite"):
+            cursor = self.con.cursor()
+            cursor.execute(query,*data)
+            rows = cursor.fetchall()
+            return rows
+    def open(self):
+        if(self.type=="sqlite"):
+            self.con = sqlite3.connect(self.sqlname)
+    def close(self):
+        if(self.type=="sqlite"):
+            self.con.close()
+    def create(self):
+        con = sqlite3.connect(self.sqlname)
+        cursor = con.cursor()
+        cursor.execute("CREATE TABLE IF NOT EXISTS users ( id INTEGER PRIMARY KEY, username TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL, perm TEXT NOT NULL );") 
+        cursor.execute("CREATE TABLE IF NOT EXISTS api (id INTEGER PRIMARY KEY AUTOINCREMENT, userid INT, enddate DATE,ban boolean DEFAULT false, datecreate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, perm VARCHAR(255));") 
+        con.commit()
+        con.close()
+    def commit(self):
+        if(self.type=="sqlite"):
+            self.con.commit()

@@ -17,12 +17,13 @@ class DB():
         if(self.type=="sqlite"):
             self.con.close()
     def create(self):
-        con = sqlite3.connect(self.sqlname)
-        cursor = con.cursor()
-        cursor.execute("CREATE TABLE IF NOT EXISTS users ( id INTEGER PRIMARY KEY, username TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL, perm TEXT NOT NULL );") 
-        cursor.execute("CREATE TABLE IF NOT EXISTS api (id INTEGER PRIMARY KEY AUTOINCREMENT, userid INT, enddate DATE,ban boolean DEFAULT false, datecreate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, perm VARCHAR(255));") 
-        con.commit()
-        con.close()
+        with open('table.sql', 'r') as sql_file:
+            sql_script = sql_file.read()
+        self.open()
+        cursor = self.con.cursor()
+        cursor.executescript(sql_script)
+        self.commit()
+        self.close()
     def commit(self):
         if(self.type=="sqlite"):
             self.con.commit()

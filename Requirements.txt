@@ -1,0 +1,4 @@
+Flasks
+Chameleon
+bcrypt
+python-dotenv

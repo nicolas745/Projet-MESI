@@ -1,0 +1,18 @@
+<header tal:condition="not '{{session.get('id')}}' == 'None'">
+        <a tal:content="lang.NAME_URL_ADMIN_ADD" href="/admin/add.html">add</a>
+        <a tal:content="lang.NAME_URL_ADMIN_LIST" href="/admin/">list</a>
+        <a tal:content="lang.NAME_URL_ADMIN_LOGOUT" href="/admin/logout.html">logout</a>
+        <a tal:content="lang.NAME_URL_ADMIN_API" href="/admin/api.html">api</a>
+        <a tal:content="lang.DOC" href="/doc.html">doc</a>
+        <span tal:content="lang.LANGUAGE"></span>
+        <select id="lang">
+                <option tal:repeat="namelang listlang" tal:content="namelang"></option>
+        </select>
+</header>
+<header tal:condition="'{{session.get('id')}}' == 'None'">
+        <a tal:content="lang.DOC" href="/doc.html">doc</a>
+        <span tal:content="lang.LANGUAGE"></span>
+        <select id="lang">
+                <option tal:repeat="namelang listlang" tal:content="namelang"></option>
+        </select>
+</header>

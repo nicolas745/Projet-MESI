@@ -4,4 +4,4 @@ describe('test du projet MESI', () => {
         // Ajoutez votre logique de test ici
         assert.strictEqual(2 + 3, 5);
       });
-});
+}); 

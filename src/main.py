@@ -3,7 +3,9 @@ from flask import Flask
 import os
 import secrets
 import importlib
+from dotenv import load_dotenv
 app = Flask(__name__)
+load_dotenv()
 app.secret_key = secrets.token_hex(16)
 repertoire = "serv"
 for fichier in os.listdir(repertoire):

@@ -1,5 +1,7 @@
 # Projet de streaming
 
+Lien vers la maquette FIGMA : https://www.figma.com/design/wFlscqDtXxQJf3ujYzf1Ir/Figma-MESI?node-id=0-1&t=gxgQbgfXLY6wfEjz-0
+
 ## Pré-requis
 
 - Python 3

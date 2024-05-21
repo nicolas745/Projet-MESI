@@ -1,65 +1,148 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #181818;
+    color: white;
+}
+
+.container {
     display: flex;
+    height: 100vh;
 }
 
 .sidebar {
     width: 250px;
-    background-color: #000;
-    color: #fff;
+    background-color: #111;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    height: 100vh;
 }
 
-.logo-section {
+.logo h2 {
+    color: white;
     text-align: center;
-    margin-bottom: 50px;
 }
 
-.logo img {
-    width: 50px;
-    height: 50px;
-    background-color: #000;
+nav ul {
+    list-style: none;
+    padding: 0;
 }
 
-.logo h1 {
-    margin: 10px 0 0;
-    font-size: 24px;
+nav ul li {
+    margin: 20px 0;
 }
 
-.navigation {
-    margin-top: 100px;
-    width: 100%;
-}
-
-.nav-button {
-    width: 100%;
-    background: none;
-    border: none;
-    color: #fff;
+nav ul li a {
+    text-decoration: none;
+    color: white;
     font-size: 18px;
-    padding: 15px 0;
-    text-align: left;
-    padding-left: 30px;
-    cursor: pointer;
 }
 
-.nav-button:hover {
-    background-color: #333;
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
 }
 
-.profile-section {
-    margin-top: auto;
-    padding-bottom: 20px;
+.featured {
+    display: flex;
+    position: relative;
 }
 
-.profile-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid #fff;
+.featured img {
+    width: 100%;
+    height: auto;
+}
+
+.featured-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.featured-info h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.featured-info p {
+    font-size: 18px;
+    max-width: 500px;
+}
+
+.tags span {
+    background-color: #444;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.next {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+}
+
+.continue-watching {
+    margin-top: 20px;
+}
+
+.continue-watching h2 {
+    margin-bottom: 10px;
+}
+
+.shows {
+    display: flex;
+}
+
+.show {
+    margin-right: 20px;
+}
+
+.show img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.show p {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.new-on-streamo, .recommended {
+    margin-top: 40px;
+}
+
+.new-on-streamo h2, .recommended h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.movie-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.movie {
+    position: relative;
+    width: 200px;
+}
+
+.movie img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
 }

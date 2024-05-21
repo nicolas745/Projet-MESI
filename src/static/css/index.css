@@ -102,7 +102,8 @@ nav ul li a {
 
 .show img {
     width: 200px;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -129,6 +130,7 @@ nav ul li a {
 .movie {
     position: relative;
     width: 200px;
+    height: 300px;
 }
 
 .movie img {

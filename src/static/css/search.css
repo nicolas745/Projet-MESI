@@ -8,30 +8,67 @@ body {
     min-height: 100vh;
 }
 
-
 nav ul li a:hover {
     color: #f40612;
+}
+
+.header {
+    background-color: #111;
+    padding: 20px;
+    margin-left: 280px;
+}
+
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+
+.search-form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #333;
+    color: white;
+}
+
+
+.search-form button {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.search-form button:hover {
+    background-color: #f40612;
 }
 
 
 .container {
     display: flex;
     flex: 1;
-    height: auto; /* Permet à la hauteur d'être définie par le contenu */
+    height: auto;
 }
 
 
 .sidebar {
-    position: fixed; /* Rend la barre latérale fixe */
-    top: 0; /* L'aligne en haut de la fenêtre */
-    left: 0; /* L'aligne à gauche de la fenêtre */
-    width: 250px; /* Définit la largeur de la barre latérale */
-    height: 100%; /* La fait occuper toute la hauteur de la fenêtre */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
     background-color: #111;
-    z-index: 1000; /* Assure que la barre latérale est au-dessus du contenu principal */
+    z-index: 1000;
 }
 
 
@@ -69,37 +106,6 @@ nav ul li a {
 }
 
 
-.featured {
-    display: flex;
-    position: relative;
-}
-
-
-.featured img {
-    width: 100%;
-    height: auto;
-}
-
-
-.featured-info {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-}
-
-
-.featured-info h1 {
-    margin: 0;
-    font-size: 36px;
-}
-
-
-.featured-info p {
-    font-size: 18px;
-    max-width: 500px;
-}
-
-
 .tags span {
     background-color: #444;
     padding: 5px 10px;
@@ -121,87 +127,15 @@ nav ul li a {
 }
 
 
-.continue-watching {
-    margin-top: 10px;
-    margin-bottom: -10px;
-}
-
-
-.continue-watching h2 {
-    margin-bottom: 20px;
-}
-
-
-.shows {
-    display: flex;
-}
-
-
-.show {
-    margin-right: 20px;
-}
-
-
-.show img {
-    width: 200px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-
-.show p {
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-}
-
-
 .new-on-streamo, .recommended {
-    margin-bottom: 60px;
-}
-
-
-.new-on-streamo h2, .recommended h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-
-.carousel {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-
-.carousel-arrow {
-    position: absolute;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-}
-
-
-.left-arrow {
-    left: 0;
-}
-
-
-.right-arrow {
-    right: 0;
+    margin-bottom: 40px;
 }
 
 
 .movie-grid {
     display: flex;
-    gap: 20px; /* Ajoute un espacement de 20px entre les films */
-    scroll-behavior: smooth;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 
@@ -218,13 +152,12 @@ nav ul li a {
     position: relative;
     width: 200px;
     height: 300px;
-    padding-right: 30px;
 }
 
 
 .movie img {
-    width: 100%;
-    height: 100%;
+    width: 200px;
+    height: 300px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -292,8 +225,8 @@ nav ul li a {
 
 .popup-details {
     text-align: left;
-    width: 100%; /* S'assure que les détails prennent toute la largeur disponible */
-    padding: 0 20px; /* Ajoute un peu de padding pour que le texte ne touche pas les bords */
+    width: 100%;
+    padding: 0 20px;
 }
 
 
@@ -357,3 +290,6 @@ nav ul li a {
 .footer-content a:hover {
     text-decoration: underline;
 }
+
+
+

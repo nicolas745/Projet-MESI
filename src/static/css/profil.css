@@ -5,10 +5,15 @@ body {
     color: white;
 }
 
+nav ul li a:hover {
+    color: #f40612;
+}
+
 .container {
     display: flex;
     height: 100vh;
 }
+
 
 .sidebar {
     width: 250px;
@@ -18,19 +23,23 @@ body {
     flex-direction: column;
 }
 
+
 .logo h2 {
     color: white;
     text-align: center;
 }
+
 
 nav ul {
     list-style: none;
     padding: 0;
 }
 
+
 nav ul li {
     margin: 20px 0;
 }
+
 
 nav ul li a {
     text-decoration: none;
@@ -38,11 +47,13 @@ nav ul li a {
     font-size: 18px;
 }
 
+
 .content {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
 }
+
 
 .profile-header {
     display: flex;
@@ -54,25 +65,29 @@ nav ul li a {
     margin-bottom: 20px;
 }
 
+
 .profile-picture {
     border-radius: 50%;
     width: 100px;
     height: 100px;
 }
 
+
 .profile-header h2 {
     margin: 0;
     font-size: 24px;
 }
 
+
 .logout {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    background-color: #ff5a5f;
+    background-color: red;
     padding: 10px 20px;
     border-radius: 5px;
 }
+
 
 .profile-info {
     background-color: #333;
@@ -80,20 +95,24 @@ nav ul li a {
     border-radius: 10px;
 }
 
+
 .profile-info h1 {
     margin-top: 0;
     font-size: 28px;
 }
+
 
 .profile-info p {
     margin: 10px 0;
     font-size: 18px;
 }
 
+
 .profile-info h2 {
     font-size: 22px;
     margin-top: 20px;
 }
+
 
 .favorite-movie {
     margin-top: 20px;
@@ -101,13 +120,52 @@ nav ul li a {
     align-items: center;
 }
 
+
 .favorite-movie img {
-    width: 400px;
+    width: 200px;
+    height: 300px;
     height: auto;
     border-radius: 10px;
 }
 
+
 .favorite-movie p {
     margin-left: 20px;
     font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+
+/* Styles pour le pied de page */
+.footer {
+    background-color: #111;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    padding-top: 20px;
+}
+
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+
+.footer-content a {
+    color: #e50914;
+    text-decoration: none;
+}
+
+
+.footer-content a:hover {
+    text-decoration: underline;
 }

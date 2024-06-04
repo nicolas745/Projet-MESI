@@ -10,8 +10,6 @@ class page(serv):
     @url('/<path:chemin>',methods=['GET','POST'])
     def all(self,chemin,**arg):
         return self.page(chemin,**arg)
-<<<<<<< HEAD
-=======
     @url('/index.html',methods=['GET','POST'])
     def index(self):
         if(session.get("id")):
@@ -25,7 +23,6 @@ class page(serv):
                         session["id"] = res[0][0]
                         return redirect('/admin/')
         return self.page("index.html")
->>>>>>> origin/front
     @url('/')
     def red(self):
         return redirect('/index.html')

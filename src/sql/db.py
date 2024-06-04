@@ -9,7 +9,11 @@ class DB():
             cursor = self.con.cursor()
             cursor.execute(query,*data)
             rows = cursor.fetchall()
-            return rows
+            if rows:
+                columns = [col[0] for col in cursor.description]
+                orders_list = [dict(zip(columns, row)) for row in rows]
+                return orders_list
+            return []
     def open(self):
         if(self.type=="sqlite"):
             self.con = sqlite3.connect(self.sqlname)

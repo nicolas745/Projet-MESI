@@ -1,24 +1,21 @@
-name: GitHub workflow
+name: Python package
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  test:
+  build:
+
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["pypy3.10"]
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Use Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
         with:
-          node-version: '18'
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run the test
-        run: npm test
+          python-version: ${{ matrix.python-version }}
+      # You can test your matrix by printing the current Python version
+      - name: Display Python version
+        run: cd src;python3 app.py

@@ -43,3 +43,7 @@ class page(serv):
                     sqluser().INSERTuser(form_datas.get('email'),password)
                     return redirect("login")
         return self.page('inscription.html',arg=arg)
+    @url('/logout', methods=['GET', 'POST'])
+    def logout(self):
+        session.pop('id', None)  
+        return redirect('/login.html')

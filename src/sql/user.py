@@ -24,3 +24,11 @@ class sqluser():
         self.db.execute("INSERT INTO users (email, mot_de_passe) VALUES (?, ?)", (email, password))
         self.db.commit()
         self.db.close()
+    def SELECTuser(self,id):
+        self.db.open()
+        user=self.db.execute("SELECT * FROM users WHERE user_id=?", ( id,))
+        self.db.commit()
+        self.db.close()
+        if( user.__len__()):
+            return user[0]
+        return None

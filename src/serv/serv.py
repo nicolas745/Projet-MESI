@@ -2,6 +2,7 @@ import os
 from flask import render_template,redirect, request, Flask, session
 from langselect import langselect
 from chameleon import PageTemplate
+from sql.user import sqluser
 from lang.lang_global import lang_global
 def url(path, methods=['GET']):
     def decorator(func):
@@ -28,6 +29,8 @@ class serv:
         if request.method == "POST":
             if "lang" in request.form.keys():
                 session['lang'] = request.form["lang"]
+        if session.get("id"):
+            arg['user'] = sqluser().SELECTuser(session.get("id"))
         arg['lang'] ={varible.name: varible.value for varible in lang_global}
         arg['lang'].update({variable.name: variable.value for variable in self.lang.getlang(session.get("lang"))})
         arg['listlang'] = [" "]

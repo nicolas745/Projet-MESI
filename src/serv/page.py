@@ -36,6 +36,7 @@ class page(serv):
         form_datas = request.form
         if(form_datas.get("submit")):
             if(form_datas.get("password")) and form_datas.get("rep_password") and form_datas.get('email'):
-                password = bcrypt. form_datas.get("password")
-                sqluser().INSERTuser(form_datas.get('email'),password)
+                if(form_datas.get("password")) == form_datas.get("rep_password"):
+                    password = bcrypt.hashpw(form_datas.get("password"),self.generer_cle())
+                    sqluser().INSERTuser(form_datas.get('email'),password)
         return self.page('inscription.html',arg=arg)

@@ -26,7 +26,7 @@ class page(serv):
                 res=sqluser().SELECTuserGetPassword(form_datas.get("username"))
                 if(res.__len__()):
                     if(bcrypt.checkpw(form_datas.get("password").encode("utf-8"),res[0]['password'])):
-                        session["id"] = res[0][0]
+                        session["id"] = res[0]['username']
                         return redirect('/membre/')
         return self.page("login.html")
     @url('/inscription.html',methods=['GET','POST'])

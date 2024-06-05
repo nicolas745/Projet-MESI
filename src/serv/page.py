@@ -6,7 +6,7 @@ import bcrypt
 class page(serv):
     def __init__(self, app):
         super().__init__(app)
-    def generer_cle():
+    def generer_cle(self):
         return bcrypt.gensalt()
     @url('/<path:chemin>',methods=['GET','POST'])
     def all(self,chemin,**arg):
@@ -19,14 +19,16 @@ class page(serv):
     @url('/login.html',methods=['GET','POST'])
     def index(self):
         if(session.get("id")):
-            return redirect('/admin/')
+            return redirect('/index.html')
         form_datas = request.form
-        if form_datas.get("submit"):
-            if form_datas.get("username") and form_datas.get("password"):
-                res=sqluser().SELECTuserGetPassword(form_datas.get("username"))
+        if "submit" in form_datas:
+            if form_datas.get("email") and form_datas.get("password"):
+                res=sqluser().SELECTuserGetPassword(form_datas.get("email"))
+                print(res)
                 if(res.__len__()):
-                    if(bcrypt.checkpw(form_datas.get("password").encode("utf-8"),res[0]['password'])):
-                        session["id"] = res[0]['username']
+                    if(bcrypt.checkpw(form_datas.get("password").encode("utf-8"),res[0]['mot_de_passe'])):
+                        print(res[0])
+                        session["id"] = res[0]['user_id']
                         return redirect('/membre/')
         return self.page("login.html")
     @url('/inscription.html',methods=['GET','POST'])
@@ -34,9 +36,10 @@ class page(serv):
         if(session.get("id")):
             return redirect('/admin/')
         form_datas = request.form
-        if(form_datas.get("submit")):
+        if "submit" in form_datas:
             if(form_datas.get("password")) and form_datas.get("rep_password") and form_datas.get('email'):
                 if(form_datas.get("password")) == form_datas.get("rep_password"):
-                    password = bcrypt.hashpw(form_datas.get("password"),self.generer_cle())
+                    password = bcrypt.hashpw(form_datas.get("password").encode("utf-8"),self.generer_cle())
                     sqluser().INSERTuser(form_datas.get('email'),password)
+                    return redirect("login")
         return self.page('inscription.html',arg=arg)

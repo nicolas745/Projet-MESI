@@ -21,7 +21,7 @@ class DB():
         if(self.type=="sqlite"):
             self.con.close()
     def create(self):
-        with open('table.sql', 'r') as sql_file:
+        with open('sql/table.sql', 'r') as sql_file:
             sql_script = sql_file.read()
         self.open()
         cursor = self.con.cursor()

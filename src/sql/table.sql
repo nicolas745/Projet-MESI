@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS users(
   identifiant TEXT,
   mot_de_passe TEXT,
   email TEXT,
-  pays_id INTEGER NOT NULL,
+  pays_id INTEGER NULL,
   FOREIGN KEY(pays_id) REFERENCES pays(pays_id)
 );
 

@@ -5,28 +5,18 @@ import os
 import bcrypt
 class page(serv):
     def __init__(self, app):
-
         super().__init__(app)
+    def generer_cle():
+        return bcrypt.gensalt()
     @url('/<path:chemin>',methods=['GET','POST'])
     def all(self,chemin,**arg):
+        if(not session.get("id")):
+            return redirect('/login.html')
         return self.page(chemin,**arg)
-    @url('/index.html',methods=['GET','POST'])
-    def index(self):
-        if(session.get("id")):
-            return redirect('/admin/')
-        form_datas = request.form
-        if form_datas.get("submit"):
-            if form_datas.get("username") and form_datas.get("password"):
-                res=sqluser().SELECTuserGetPassword(form_datas.get("username"))
-                if(res.__len__()):
-                    if(bcrypt.checkpw(form_datas.get("password").encode("utf-8"),res[0][1])):
-                        session["id"] = res[0][0]
-                        return redirect('/admin/')
-        return self.page("index.html")
     @url('/')
     def red(self):
         return redirect('/index.html')
-    @url('/index.html',methods=['GET','POST'])
+    @url('/login.html',methods=['GET','POST'])
     def index(self):
         if(session.get("id")):
             return redirect('/admin/')
@@ -35,12 +25,17 @@ class page(serv):
             if form_datas.get("username") and form_datas.get("password"):
                 res=sqluser().SELECTuserGetPassword(form_datas.get("username"))
                 if(res.__len__()):
-                    if(bcrypt.checkpw(form_datas.get("password").encode("utf-8"),res[0][1])):
+                    if(bcrypt.checkpw(form_datas.get("password").encode("utf-8"),res[0]['password'])):
                         session["id"] = res[0][0]
                         return redirect('/membre/')
-        return self.page("index.html")
+        return self.page("login.html")
     @url('/inscription.html',methods=['GET','POST'])
     def inscription(self,**arg):
         if(session.get("id")):
             return redirect('/admin/')
+        form_datas = request.form
+        if(form_datas.get("submit")):
+            if(form_datas.get("password")) and form_datas.get("rep_password") and form_datas.get('email'):
+                password = bcrypt. form_datas.get("password")
+                sqluser().INSERTuser(form_datas.get('email'),password)
         return self.page('inscription.html',arg=arg)

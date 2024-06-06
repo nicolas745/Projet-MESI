@@ -11,42 +11,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupDirector = popup.querySelector('#popup-director');
     const closeBtn = popup.querySelector('.close');
     const popupTriggers = document.querySelectorAll('.popup-trigger');
+    const videoPopup = document.getElementById('videoPopup');
+    const videoPopupContent = document.querySelector('.video-popup-content');
+    const videoClose = document.querySelector('.video-close');
 
+    // Carousel functionality
+    const carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(carousel => {
+        const leftArrow = carousel.querySelector('.left-arrow');
+        const rightArrow = carousel.querySelector('.right-arrow');
+        const movieContainer = carousel.querySelectorAll('.movie');
+        const totalMovies = movieContainer.length;
+        let currentIndex = 0;
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const carousels = document.querySelectorAll('.carousel');
-    
-        carousels.forEach(carousel => {
-            const leftArrow = carousel.querySelector('.left-arrow');
-            const rightArrow = carousel.querySelector('.right-arrow');
-            const movieContainer = carousel.querySelectorAll('.movie');
-            const totalMovies = movieContainer.length;
-            let currentIndex = 0;
-    
-            function updateCarousel() {
-                const offset = -currentIndex * (movieContainer[0].offsetWidth + 20); // 20 is the margin value, adjust if needed
-                movieContainer.forEach(movie => {
-                    movie.style.transform = `translateX(${offset}px)`;
-                });
+        function updateCarousel() {
+            const offset = -currentIndex * (movieContainer[0].offsetWidth + 20); // 20 is the margin value, adjust if needed
+            movieContainer.forEach(movie => {
+                movie.style.transform = `translateX(${offset}px)`;
+            });
+        }
+
+        leftArrow.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
             }
-    
-            leftArrow.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
-            });
-    
-            rightArrow.addEventListener('click', () => {
-                if (currentIndex < totalMovies - 1) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-            });
+        });
+
+        rightArrow.addEventListener('click', () => {
+            if (currentIndex < totalMovies - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
         });
     });
 
-
+    // Open film info popup
     function openPopup(data) {
         popupImage.src = data.image;
         popupTitle.textContent = data.title;
@@ -57,21 +57,28 @@ document.addEventListener('DOMContentLoaded', () => {
         popupActors.textContent = `Actors: ${data.actors}`;
         popupDirector.textContent = `Director: ${data.director}`;
         popup.style.display = 'block';
+
+        // Attach event listener to the watch button
+        const watchButton = document.querySelector('.popup-button.watch');
+        watchButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+            videoPopup.style.display = 'block';
+        });
     }
 
-
+    // Close film info popup
     closeBtn.addEventListener('click', () => {
         popup.style.display = 'none';
     });
 
-
+    // Close film info popup by clicking outside
     window.addEventListener('click', (event) => {
         if (event.target === popup) {
             popup.style.display = 'none';
         }
     });
 
-
+    // Open film info popup on trigger click
     popupTriggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
             const data = JSON.parse(trigger.getAttribute('data-info'));
@@ -79,7 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
             openPopup(data);
         });
     });
+
+    // Close video popup
+    videoClose.onclick = function() {
+        videoPopup.style.display = 'none';
+        videoPopupContent.querySelector('video').pause();
+    };
+
+    // Close video popup by clicking outside
+    window.onclick = function(event) {
+        if (event.target == videoPopup) {
+            videoPopup.style.display = 'none';
+            videoPopupContent.querySelector('video').pause();
+        }
+    };
 });
-
-
-

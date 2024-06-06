@@ -17,4 +17,5 @@ for fichier in os.listdir(repertoire):
                     objs(app)
 
 if __name__ == '__main__':
-    app.run(debug=True,port=os.getenv("port"))
+    print(os.environ.get("port"))
+    app.run(debug=True,port=os.getenv("PORT"),host=os.getenv("HOST"))

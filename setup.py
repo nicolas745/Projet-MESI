@@ -8,5 +8,9 @@ with open(env_file_path, 'w') as env_file:
     port = input("Entrez le numéro de port: ")
     # Write the port number to the .env file
     env_file.write(f"PORT={port}\n")
-    
-print(f"Fichier .env créé avec succès dans le dossier 'src' avec le port {port}")
+
+    host = input("Entrez le numéro de host: ")
+    # Write the port number to the .env file
+    env_file.write(f"HOST={host}\n")
+
+print(f"Fichier .env créé avec succès dans le dossier 'src' avec l'ip {host}:{port}")

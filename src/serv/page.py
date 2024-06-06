@@ -47,3 +47,4 @@ class page(serv):
     def logout(self):
         session.pop('id', None)  
         return redirect('/login.html')
+   

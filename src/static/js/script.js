@@ -87,17 +87,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close video popup
-    videoClose.onclick = function() {
-        videoPopup.style.display = 'none';
-        videoPopupContent.querySelector('video').pause();
-    };
-
-    // Close video popup by clicking outside
-    window.onclick = function(event) {
-        if (event.target == videoPopup) {
-            videoPopup.style.display = 'none';
-            videoPopupContent.querySelector('video').pause();
-        }
-    };
+    document.getElementById('search-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const searchInput = document.getElementById('search-input').value;
+        
+        fetch('/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ search: searchInput })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const movieGrid = document.querySelector('.movie-grid');
+            movieGrid.innerHTML = ''; // Clear previous results
+            data.forEach(movie => {
+                const movieElement = document.createElement('div');
+                movieElement.className = 'movie';
+                movieElement.innerHTML = `
+                    <h3>${movie.titre}</h3>
+                    <p>${movie.nom} ${movie.prenom}</p>
+                    <p>${movie.annee}</p>
+                    <p>${movie.duree}</p>
+                    <p>${movie.note}</p>
+                    <p>${movie.description}</p>
+                `;
+                movieGrid.appendChild(movieElement);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    });    
 });

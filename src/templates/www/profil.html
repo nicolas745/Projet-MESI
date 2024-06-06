@@ -24,7 +24,7 @@
         <main class="content">
             <div class="profile-header">
                 <img src="https://via.placeholder.com/100" alt="Profile Picture" class="profile-picture">
-                <h2>The Kapibara 97</h2>
+                <h2><span tal:content="user.identifiant"></span></h2>
                 <form  action="/logout" method="POST">
                     <button class="logout" type="submit">Déconnexion</button>
                 </form>
@@ -32,8 +32,8 @@
             <div class="profile-info">
                 <h1>Profil</h1>
                 <p><strong>Adresse mail :</strong> <span tal:content="user.email"></span></p>
-                <p><strong>Nom :</strong> Bernard</p>
-                <p><strong>Prénom :</strong> Yohann</p>
+                <p><strong>Nom :</strong></p>
+                <p><strong>Prénom :</strong></p>
                 <h2>Film préféré :</h2>
                 <div class="favorite-movie">
                     <img src="static/images/batman.jpg" alt="Batman The Dark night">

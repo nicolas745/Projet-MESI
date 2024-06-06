@@ -1,7 +1,6 @@
 from serv.serv import serv , url
 from sql.video import video
 from flask import Flask, request
-from flask import Flask, request, jsonify
 class apivideo(serv):
     def __init__(self, app: Flask):
         super().__init__(app)
@@ -16,5 +15,6 @@ class apivideo(serv):
     @url('/search', methods=['POST'])
     def search(self):
         search_term = request.form.get('search')
+        print(search_term)
         results = video().searchvideo(search_term)
-        return jsonify(results)
+        return results

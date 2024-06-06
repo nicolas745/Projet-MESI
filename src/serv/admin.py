@@ -1,6 +1,6 @@
 from .serv import serv, url
 from flask import session, redirect
-class page(serv):
+class admin(serv):
     def __init__(self, app):
         super().__init__(app)
     @url("/membre/home.html")

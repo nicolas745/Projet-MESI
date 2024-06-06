@@ -13,9 +13,9 @@ for fichier in os.listdir(repertoire):
         module = importlib.import_module("serv."+fichier[:-3])
         for name, objs in vars(module).items():
             if isinstance(objs, type):
-                if(objs.__name__ in module.__name__):
-                    objs(app)
+                if(objs.__name__==fichier[:-3]):
+                    if(objs.__name__ in module.__name__):
+                        objs(app)
 
 if __name__ == '__main__':
-    print(os.environ.get("port"))
     app.run(debug=True,port=os.getenv("PORT"),host=os.getenv("HOST"))

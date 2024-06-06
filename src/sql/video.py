@@ -1,5 +1,5 @@
 from .db  import DB
-class sqlvideo:
+class video:
     def __init__(self) -> None:
         self.db = DB()
     def getinfo(self,id):

@@ -1,17 +1,17 @@
 from .db  import DB
-class video:
+class sqlvideo:
     def __init__(self) -> None:
         self.db = DB()
     def getinfo(self,id):
         self.db.open()
-        info=self.db.execute("SELECT `contenu_id`, `description`, `titre`, `video`, `image`, `Auteur.nom`, `Auteur.prenom` INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id  FROM contenu WHERE contenu_id=?;",(id,))
+        info=self.db.execute("SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id  WHERE contenu_id=?;",(id,))
         self.db.close()
         return info
 
     def list_videos(self, num_elements, page_number):
         self.db.open()
         offset = (page_number - 1) * num_elements
-        query = "SELECT `contenu_id`, `description`, `titre`, `video`, `image`, `Auteur.nom`, `Auteur.prenom` FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id LIMIT ? OFFSET ?;"
+        query = "SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id LIMIT ? OFFSET ?;"
         videos = self.db.execute(query, (num_elements, offset))
         self.db.close()
         return videos

@@ -25,5 +25,11 @@ class video:
     def delete_video(self, id):
         self.db.open()
         query = "DELETE FROM contenu WHERE contenu_id = ?;"
-        self.db.execute(query, [id])
+        self.db.execute(query, (id,))
         self.db.close()
+    def searchvideo(self,search):
+        self.db.open()
+        query = "DELETE FROM contenu WHERE titre LIKE ? OR Auteur.nom LIKE ? OR Auteur.prenom LIKE ?;"
+        res=self.db.execute(query, (search,))
+        self.db.close()
+        return res

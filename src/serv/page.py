@@ -29,7 +29,7 @@ class page(serv):
                     if(bcrypt.checkpw(form_datas.get("password").encode("utf-8"),res[0]['mot_de_passe'])):
                         print(res[0])
                         session["id"] = res[0]['user_id']
-                        return redirect('/membre/')
+                        return redirect('/')
         return self.page("login.html")
     @url('/inscription.html',methods=['GET','POST'])
     def inscription(self,**arg):

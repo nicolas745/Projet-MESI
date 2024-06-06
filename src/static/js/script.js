@@ -11,23 +11,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupDirector = popup.querySelector('#popup-director');
     const closeBtn = popup.querySelector('.close');
     const popupTriggers = document.querySelectorAll('.popup-trigger');
-    const movieGrid = document.querySelector('.recommended .movie-grid');
-    const leftArrow = document.querySelector('.recommended .left-arrow');
-    const rightArrow = document.querySelector('.recommended .right-arrow');
 
 
-    leftArrow.addEventListener('click', () => {
-        movieGrid.scrollBy({
-            left: -movieGrid.clientWidth,
-            behavior: 'smooth'
-        });
-    });
-
-
-    rightArrow.addEventListener('click', () => {
-        movieGrid.scrollBy({
-            left: movieGrid.clientWidth,
-            behavior: 'smooth'
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousels = document.querySelectorAll('.carousel');
+    
+        carousels.forEach(carousel => {
+            const leftArrow = carousel.querySelector('.left-arrow');
+            const rightArrow = carousel.querySelector('.right-arrow');
+            const movieContainer = carousel.querySelectorAll('.movie');
+            const totalMovies = movieContainer.length;
+            let currentIndex = 0;
+    
+            function updateCarousel() {
+                const offset = -currentIndex * (movieContainer[0].offsetWidth + 20); // 20 is the margin value, adjust if needed
+                movieContainer.forEach(movie => {
+                    movie.style.transform = `translateX(${offset}px)`;
+                });
+            }
+    
+            leftArrow.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+    
+            rightArrow.addEventListener('click', () => {
+                if (currentIndex < totalMovies - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
         });
     });
 

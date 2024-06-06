@@ -31,18 +31,32 @@
             </div>
             <div class="profile-info">
                 <h1>Profil</h1>
-                <p><strong>Adresse mail :</strong></p>
+                <p><strong>Adresse mail :</strong> <span tal:content="user.email"></span></p>
                 <p><strong>Nom :</strong> Bernard</p>
                 <p><strong>Prénom :</strong> Yohann</p>
-                <p><strong>Date de création du compte :</strong> 04/10/2022</p>
                 <h2>Film préféré :</h2>
                 <div class="favorite-movie">
                     <img src="static/images/batman.jpg" alt="Batman The Dark night">
                     <p>Batman : The Dark night</p>
                 </div>
+                <button id="editProfileBtn">Modifier</button>
             </div>
         </main>
     </div>
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="editProfileForm">
+                <label for="pseudo">Pseudo:</label>
+                <input type="text" id="pseudo" name="pseudo" value="The Kapibara 97">
+                <label for="lastName">Nom:</label>
+                <input type="text" id="lastName" name="lastName" value="Bernard">
+                <label for="firstName">Prénom:</label>
+                <input type="text" id="firstName" name="firstName" value="Yohann">
+                <button type="submit">Enregistrer</button>
+            </form>
+        </div>
+    </div>    
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2024 Streamo. Tous droits réservés.</p>
@@ -55,5 +69,36 @@
         </div>
     </footer>
 </body>
+
+<script>
+    document.getElementById('editProfileBtn').onclick = function() {
+        document.getElementById('editProfileModal').style.display = "block";
+    }
+    
+    document.querySelector('.close').onclick = function() {
+        document.getElementById('editProfileModal').style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('editProfileModal')) {
+            document.getElementById('editProfileModal').style.display = "none";
+        }
+    }
+    
+    document.getElementById('editProfileForm').onsubmit = function(event) {
+        event.preventDefault();
+        
+        let pseudo = document.getElementById('pseudo').value;
+        let lastName = document.getElementById('lastName').value;
+        let firstName = document.getElementById('firstName').value;
+        
+        document.querySelector('.profile-header h2').textContent = pseudo;
+        document.querySelector('.profile-info p:nth-of-type(2)').innerHTML = '<strong>Nom :</strong> ' + lastName;
+        document.querySelector('.profile-info p:nth-of-type(3)').innerHTML = '<strong>Prénom :</strong> ' + firstName;
+        
+        document.getElementById('editProfileModal').style.display = "none";
+    }
+    </script>
+    
 </html>
 

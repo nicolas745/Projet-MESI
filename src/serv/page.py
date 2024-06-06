@@ -17,7 +17,7 @@ class page(serv):
     def red(self):
         return redirect('/index.html')
     @url('/login.html',methods=['GET','POST'])
-    def index(self):
+    def login(self):
         if(session.get("id")):
             return redirect('/index.html')
         form_datas = request.form

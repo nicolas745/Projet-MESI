@@ -2,7 +2,6 @@ from .db import DB
 class sqluser():
     def __init__(self) -> None:
         self.db=DB()
-        pass
     def SelectDataPublicUser(self):
         self.db.open()
         membres=self.db.execute("SELECT `user_id`, `email` FROM users;")

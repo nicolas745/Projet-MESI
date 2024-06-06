@@ -1,7 +1,9 @@
 from serv.serv import serv , url
 from sql.video import video
-from flask import request
+from flask import Flask, request
 class apivideo(serv):
+    def __init__(self, app: Flask):
+        super().__init__(app)
     @url("/api/video/list",['GET'])
     def listvideo(self):
         if('page' in request.args):

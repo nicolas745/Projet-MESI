@@ -1,10 +1,12 @@
-from .db  import DB
+from .db import DB
+
 class video:
     def __init__(self) -> None:
         self.db = DB()
-    def getinfo(self,id):
+
+    def getinfo(self, id):
         self.db.open()
-        info=self.db.execute("SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id  WHERE contenu_id=?;",(id,))
+        info = self.db.execute("SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id WHERE contenu_id=?;", (id,))
         self.db.close()
         return info
 
@@ -16,10 +18,10 @@ class video:
         self.db.close()
         return videos
 
-    def add_video(self,description, titre ,urlvideo,image,auteur_id ):
+    def add_video(self, description, titre, urlvideo, image, auteur_id):
         self.db.open()
-        query = "INSERT INTO contenu (`description`, `titre`, `video`, `image`, `auteur_id`) VALUES (? , ? , ? , ? , ?);"
-        self.db.execute(query, (description, titre ,urlvideo,image,auteur_id  ))
+        query = "INSERT INTO contenu (description, titre, video, image, auteur_id) VALUES (?, ?, ?, ?, ?);"
+        self.db.execute(query, (description, titre, urlvideo, image, auteur_id))
         self.db.close()
 
     def delete_video(self, id):
@@ -28,10 +30,9 @@ class video:
         self.db.execute(query, (id,))
         self.db.close()
 
-    def searchvideo(self,search):
+    def searchvideo(self, search):
         self.db.open()
         query = "SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id WHERE titre LIKE ? OR Auteur.nom LIKE ? OR Auteur.prenom LIKE ?;"
-        res=self.db.execute(query, (search,))
+        res = self.db.execute(query, (f'%{search}%', f'%{search}%', f'%{search}%'))
         self.db.close()
         return res
-    

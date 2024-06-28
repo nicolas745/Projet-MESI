@@ -82,7 +82,6 @@ CREATE TABLE IF NOT EXISTS action_user(
   FOREIGN KEY(contenu_id) REFERENCES contenu(contenu_id)
 );
 
-
 INSERT OR REPLACE INTO Auteur (auteur_id, prenom, nom) VALUES (1, 'Jean', 'Dupont');
 INSERT OR REPLACE INTO Auteur (auteur_id, prenom, nom) VALUES (2, 'Marie', 'Curie');
 INSERT OR REPLACE INTO Auteur (auteur_id, prenom, nom) VALUES (3, 'Albert', 'Camus');
@@ -91,13 +90,12 @@ INSERT OR REPLACE INTO Auteur (auteur_id, prenom, nom) VALUES (5, 'Victor', 'Hug
 INSERT OR REPLACE INTO Auteur (auteur_id, prenom, nom) VALUES (6, 'Emile', 'Zola');
 INSERT OR REPLACE INTO Auteur (auteur_id, prenom, nom) VALUES (7, 'Marcel', 'Proust');
 
-
-INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (1,'Description 1', 'Title 1', 'video1.mp4', 'image1.png', 1);
-INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (2,'Description 2', 'Title 2', 'video2.mp4', 'image2.png', 2);
-INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (3,'Description 3', 'Title 3', 'video3.mp4', 'image3.png', 3);
-INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (4,'Description 4', 'Title 4', 'video4.mp4', 'image4.png', 4);
-INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (5,'Description 5', 'Title 5', 'video5.mp4', 'image5.png', 5);
-INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (6,'Description 6', 'Title 6', 'video6.mp4', 'image6.png', 6);
-INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (7,'Description 7', 'Title 7', 'video7.mp4', 'image7.png', 7);
-INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (8,'Description 8', 'Title 8', 'video7.mp4', 'image8.png', 3);
-INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (9,'Description 9', 'Title 9', 'video7.mp4', 'image9.png', 1);
+INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (1, 'Un homme noir rend visite à la famille de sa petite amie blanche.', 'Get Out', 'getout.mp4', 'get_out.jpg', 1);
+INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (2, 'Clark Kent apprend qu''il est un super-héros.', 'Man of Steel', 'manofsteel.mp4', 'man_of_steel.jpg', 2);
+INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (3, 'Devilman Crybaby est une série d''animation ONA japonaise.', 'Devilman Crybaby', 'devilmancrybaby.mp4', 'dmcb.jpg', 3);
+INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (4, 'Les habitants d''une petite ville sont témoins d''un phénomène mystérieux.', 'Nope', 'Nope.mp4', 'nope.jpg', 4);
+INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (5, 'La chronique des familles de l''aristocratie britannique.', 'La Chronique des Bridgerton', 'LaChroniquedesBridgerton.mp4', 'bridgerton.jpg', 5);
+INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (6, 'Un lycéen brillant réveille l''humanité de la pétrification.', 'Dr. Stone', 'drstone.mp4', 'drstone.jpg', 6);
+INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (7, 'Un adolescent sous surveillance électronique suspecte son voisin d''être un tueur en série.', 'Paranoiak', 'paranoiak.mp4', 'paranoiak.jpg', 7);
+INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (8, 'Un acteur et son cascadeur cherchent à se faire un nom dans le Hollywood de 1969.', 'Once Upon A Time In Hollywood', 'OnceUponATimeInHollywood.mp4', 'once_upon_a_time.jpg', 3);
+INSERT OR REPLACE INTO contenu (contenu_id, description, titre, video, image, auteur_id) VALUES (9, 'Batman affronte le Joker dans Gotham City.', 'Batman : The Dark Knight', 'Batman.mp4', 'batman.jpg', 1);

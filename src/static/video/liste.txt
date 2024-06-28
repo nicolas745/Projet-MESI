@@ -1,0 +1,22 @@
+ Volume in drive C is Acer
+ Volume Serial Number is 9AFF-4107
+
+ Directory of C:\Users\melvy\Documents\ProjetMesiOG\Projet-MESI\src\static\video
+
+06/06/2024  13:38    <DIR>          .
+06/06/2024  13:38    <DIR>          ..
+06/06/2024  12:21        22,027,440 Batman.mp4
+06/06/2024  12:48        11,040,094 devilmancrybaby.mp4
+06/06/2024  12:54        37,676,539 drstone.mp4
+06/06/2024  12:55        17,830,675 getout.mp4
+06/06/2024  12:56        48,193,498 LaChroniquedesBridgerton.mp4
+06/06/2024  13:38                 0 liste.txt
+06/06/2024  12:49        35,524,832 manofsteel.mp4
+06/06/2024  12:50        32,669,647 Nope.mp4
+06/06/2024  12:57        28,473,777 OnceUponATimeInHollywood.mp4
+06/06/2024  02:51        12,972,565 test1.mp4
+              10 File(s)    246,409,067 bytes
+
+     Total Files Listed:
+              10 File(s)    246,409,067 bytes
+               2 Dir(s)  53,699,100,672 bytes free

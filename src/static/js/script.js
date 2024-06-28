@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = popup.querySelector('.close');
     const popupTriggers = document.querySelectorAll('.popup-trigger');
     const videoPopup = document.getElementById('videoPopup');
-    const videoPopupContent = document.querySelector('.video-popup-content');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoSource = document.getElementById('videoSource');
     const videoClose = document.querySelector('.video-close');
+    let videoFileName = null;
 
     // Carousel functionality
     const carousels = document.querySelectorAll('.carousel');
@@ -56,14 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
         popupDescription.textContent = data.description;
         popupActors.textContent = `Actors: ${data.actors}`;
         popupDirector.textContent = `Director: ${data.director}`;
+        videoFileName = data.video; // Store the video filename
         popup.style.display = 'block';
 
         // Attach event listener to the watch button
         const watchButton = document.querySelector('.popup-button.watch');
         watchButton.addEventListener('click', () => {
             popup.style.display = 'none';
-            videoPopup.style.display = 'block';
+            openVideoPopup(videoFileName);
         });
+    }
+
+    // Open video popup
+    function openVideoPopup(videoFileName) {
+        videoSource.src = `static/video/${videoFileName}`; // Update the source based on videoFileName
+        videoPlayer.load();
+        videoPopup.style.display = 'block';
     }
 
     // Close film info popup
@@ -71,10 +81,24 @@ document.addEventListener('DOMContentLoaded', () => {
         popup.style.display = 'none';
     });
 
+    // Close video popup
+    videoClose.addEventListener('click', () => {
+        videoPopup.style.display = 'none';
+        videoPlayer.pause();
+    });
+
     // Close film info popup by clicking outside
     window.addEventListener('click', (event) => {
         if (event.target === popup) {
             popup.style.display = 'none';
+        }
+    });
+
+    // Close video popup by clicking outside
+    window.addEventListener('click', (event) => {
+        if (event.target === videoPopup) {
+            videoPopup.style.display = 'none';
+            videoPlayer.pause();
         }
     });
 
@@ -87,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Handle search form submission
     document.getElementById('search-form').addEventListener('submit', function(event) {
         event.preventDefault();
         const searchInput = document.getElementById('search-input').value;

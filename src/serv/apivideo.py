@@ -14,7 +14,8 @@ class apivideo(serv):
         return video().getinfo(request.args.get('id'))
     @url('/search', methods=['POST'])
     def search(self):
-        search_term = request.form.get('search')
+        print(request.method)
+        search_term = request.get_json()['search']
         print(search_term)
         results = video().searchvideo(search_term)
         return results

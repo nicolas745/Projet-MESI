@@ -30,10 +30,11 @@ class video:
     
     def searchvideo(self,search):
         self.db.open()
-        query = "SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id WHERE 1;"
-        res=self.db.execute(query, ())
-        #query = "SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id WHERE titre LIKE ? OR Auteur.nom LIKE ? OR Auteur.prenom LIKE ?;"
-        #res=self.db.execute(query, (search,search,search))
+        #query = "SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id WHERE 1;"
+        #res=self.db.execute(query, ())
+        print(search)
+        query = "SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id WHERE titre LIKE ? OR Auteur.nom LIKE ? OR Auteur.prenom LIKE ?;"
+        res=self.db.execute(query, (search,search,search))
         self.db.close()
         return res
     

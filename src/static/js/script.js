@@ -63,10 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Attach event listener to the watch button
         const watchButton = document.querySelector('.popup-button.watch');
-        watchButton.addEventListener('click', () => {
-            popup.style.display = 'none';
-            openVideoPopup(videoFileName);
-        });
+        watchButton.removeEventListener('click', handleWatchButtonClick); // Ensure no duplicate event listeners
+        watchButton.addEventListener('click', handleWatchButtonClick);
+    }
+
+    function handleWatchButtonClick() {
+        popup.style.display = 'none';
+        openVideoPopup(videoFileName);
     }
 
     // Open video popup
@@ -133,9 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 movieElement.innerHTML = `
                     <h3>${movie.titre}</h3>
                     <p>${movie.nom} ${movie.prenom}</p>
-                    <p>${movie.annee}</p>
-                    <p>${movie.duree}</p>
-                    <p>${movie.note}</p>
                     <p>${movie.description}</p>
                 `;
                 movieGrid.appendChild(movieElement);

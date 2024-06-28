@@ -20,19 +20,24 @@ class video:
 
     def add_video(self, description, titre, urlvideo, image, auteur_id):
         self.db.open()
-        query = "INSERT INTO contenu (description, titre, video, image, auteur_id) VALUES (?, ?, ?, ?, ?);"
+        query = "INSERT INTO contenu (`description`, `titre`, `video`, `image`, `auteur_id`) VALUES (? , ? , ? , ? , ?);"
         self.db.execute(query, (description, titre, urlvideo, image, auteur_id))
         self.db.close()
 
     def delete_video(self, id):
         self.db.open()
         query = "DELETE FROM contenu WHERE contenu_id = ?;"
-        self.db.execute(query, (id,))
+        self.db.execute(query, [id])
         self.db.close()
 
-    def searchvideo(self,search):
+    def search_video(self, search):
         self.db.open()
-        query = "SELECT * FROM contenu INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id WHERE titre LIKE ? OR Auteur.nom LIKE ? OR Auteur.prenom LIKE ?;"
-        res=self.db.execute(query, (search,))
+        query = """
+        SELECT * FROM contenu 
+        INNER JOIN Auteur ON contenu.auteur_id = Auteur.auteur_id 
+        WHERE titre LIKE ? OR description LIKE ? OR Auteur.nom LIKE ? OR Auteur.prenom LIKE ?;
+        """
+        search_term = f"%{search}%"
+        results = self.db.execute(query, (search_term, search_term, search_term, search_term))
         self.db.close()
-        return res
+        return results

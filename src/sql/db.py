@@ -31,3 +31,4 @@ class DB():
     def commit(self):
         if(self.type=="sqlite"):
             self.con.commit()
+        

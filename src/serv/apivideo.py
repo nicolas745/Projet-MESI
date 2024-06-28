@@ -12,10 +12,10 @@ class apivideo(serv):
     @url("/api/video", ['GET'])
     def video(self):
         return video().getinfo(request.args.get('id'))
-    @url('/search', methods=['POST'])
-    def search(self):
-        print(request.method)
-        search_term = request.get_json()['search']
-        print(search_term)
-        results = video().searchvideo(search_term)
+    @url('/api/search', methods=['GET'])
+    def search(self,):
+        results = {}
+        search_term = request.args.get('search')
+        if(search_term):
+            results = video().searchvideo(search_term)
         return results
